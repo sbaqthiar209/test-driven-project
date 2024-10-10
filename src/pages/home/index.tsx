@@ -1,9 +1,11 @@
 import { Box, TextField, Typography ,Button} from "@mui/material";
 import styles from "./home.module.scss";
+import React, { useEffect } from 'react';
 
 const StringCalculator = () => {
+  const [inputString,setInputString]= React.useState<string>("");
   const handleInputChange = (newValue: string) => {
-    console.log("newValue is-", newValue);
+    setInputString(newValue)
   };
   return (
     <>
@@ -11,10 +13,13 @@ const StringCalculator = () => {
         <Typography variant="body1" title={"Help text"}>Type text below</Typography>
         <TextField
           variant="outlined"
+          value={inputString}
           onChange={(e) =>
             handleInputChange((e.target as HTMLInputElement).value)
           }
-          data-testid={"input-element"}
+          inputProps={{
+            "data-testid":"input-element"
+          }}
         />
         <Button variant="contained">Add</Button>
       </Box>
