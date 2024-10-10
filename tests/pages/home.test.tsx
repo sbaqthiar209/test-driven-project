@@ -4,16 +4,16 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom'
-import Home from '../../src/pages/home';
+import StringCalculator from '../../src/pages/home';
 import userEvent from '@testing-library/user-event';
 
-describe('Home Component Test', () => {
+describe('String Calculator Component Test', () => {
 
-  it('Renders correctly initial document', async () => {
+  it('Check if String Calculator UI is rendered', () => {
     render(
-      <Home />
+      <StringCalculator />
     );
-    const loginLabel = screen.getByTestId("home-banner");
-    expect(loginLabel).toBeInTheDocument();
+    const inputElement = screen.getByTestId("input-element");
+    expect(inputElement).toBeInTheDocument();
   });
 });

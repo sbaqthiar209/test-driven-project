@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import styles from "./home.module.scss";
 
-const Home = () => {
+const StringCalculator = () => {
   return (
     <>
-      <Box className={styles.homeContainer} data-testid="home-banner">
+      <Box className={styles.homeContainer}>
         Test Page
       </Box>
     </>
   );
 };
-export default Home;
+export default StringCalculator;
