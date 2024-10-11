@@ -10,17 +10,13 @@ const StringCalculator = () => {
   const handleInputChange = (newValue: string) => {
     setInputString(newValue);
   };
-  let result = 0;
+  let result = 0,delimeter="";
   const addValue = (newChar: string[]) => {
     const characterToCheck = newChar[0];
     if (newChar.length === 0) {
       return result;
     }
-    if (isNaN(Number(characterToCheck))) {
-      return result;
-    } else {
-      result = result + Number(characterToCheck);
-    }
+    result = result + (isNaN(Number(characterToCheck)) ? 0 : Number(characterToCheck));
     newChar.shift();
     addValue(newChar);
     return result;
@@ -29,7 +25,12 @@ const StringCalculator = () => {
     if (newValueToAdd === "") {
       return;
     }
-    let cleanedArray = newValueToAdd.replaceAll("\\n", ",").split(",");
+    if (newValueToAdd.startsWith("//")) {
+      delimeter = newValueToAdd[2];
+      newValueToAdd = newValueToAdd.replaceAll(`//${delimeter}`, "");
+    }
+    const delimeterToUse = delimeter ? delimeter :",";
+    let cleanedArray = newValueToAdd.replaceAll("\\n", delimeterToUse).split(delimeterToUse);
     const finalValue = addValue(cleanedArray);
     if (finalValue) {
       setInputString(`${finalValue}`);

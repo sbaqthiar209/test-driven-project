@@ -61,11 +61,11 @@ describe("Assessment test cases for String calculator", () => {
     expect(inputElement).toHaveValue("9");
   });
   it("To handle dynamic delimeter specified at the start of the string using //", async () => {
-    const inputStringWithDynamicDelimeter = "//;2;1;2;1\\n1"; //sum=7
+    const inputStringWithDynamicDelimeter = "//;\\n1;2"; //sum=7
     await userEvent.type(inputElement, inputStringWithDynamicDelimeter);
     expect(inputElement).toHaveValue(inputStringWithDynamicDelimeter);
     const buttonElement = screen.getByTestId("add-button");
     await userEvent.click(buttonElement);
-    expect(inputElement).toHaveValue("7");
+    expect(inputElement).toHaveValue("3");
   });
 });
