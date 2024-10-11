@@ -41,7 +41,7 @@ describe('String Calculator Component Test', () => {
 describe('Assessment test cases for String calculator',  () => {
   const testInputString = "1,2,3"
 
-  it('Check if Add is working with correctly', async () => {
+  it('Check if Add is adding the comma separated digits correctly', async () => {
     render(
       <StringCalculator />
     );
@@ -50,7 +50,6 @@ describe('Assessment test cases for String calculator',  () => {
     expect(inputElement).toHaveValue(testInputString);
     const buttonElement = screen.getByTestId("add-button");
     await userEvent.click(buttonElement);
-    expect(screen.getByText("6")).toBeInTheDocument();
-
+    expect(inputElement).toHaveValue("6")
   });
 });
