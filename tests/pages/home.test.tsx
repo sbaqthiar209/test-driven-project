@@ -26,4 +26,31 @@ describe('String Calculator Component Test', () => {
     await userEvent.type(inputElement,testInputString)
     expect(inputElement).toHaveValue(testInputString);
   });
+
+  it('Check if Add button is working with correctly',async () => {
+    render(
+      <StringCalculator />
+    );
+    const inputElement = screen.getByTestId("input-element");
+    await userEvent.type(inputElement,testInputString)
+    expect(inputElement).toHaveValue(testInputString);
+  });
+});
+
+
+describe('Assessment test cases for String calculator',  () => {
+  const testInputString = "1,2,3"
+
+  it('Check if Add is working with correctly', async () => {
+    render(
+      <StringCalculator />
+    );
+    const inputElement = screen.getByTestId("input-element");
+    await userEvent.type(inputElement,testInputString)
+    expect(inputElement).toHaveValue(testInputString);
+    const buttonElement = screen.getByTestId("add-button");
+    await userEvent.click(buttonElement);
+    expect(screen.getByText("6")).toBeInTheDocument();
+
+  });
 });
