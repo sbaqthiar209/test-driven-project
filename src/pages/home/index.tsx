@@ -26,7 +26,7 @@ const StringCalculator = () => {
     return result;
   };
   const addFromString = (newValueToAdd: string) => {
-    if (newValueToAdd === "" || newValueToAdd.length>7) {
+    if (newValueToAdd === "") {
       return;
     }
     let cleanedArray = newValueToAdd.split(",");
