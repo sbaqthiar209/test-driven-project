@@ -29,8 +29,7 @@ const StringCalculator = () => {
     if (newValueToAdd === "") {
       return;
     }
-    let cleanedArray = newValueToAdd.split(",");
-
+    let cleanedArray = newValueToAdd.replaceAll("\\n", ",").split(",");
     const finalValue = addValue(cleanedArray);
     if (finalValue) {
       setInputString(`${finalValue}`);
@@ -55,7 +54,11 @@ const StringCalculator = () => {
             "data-testid": "input-element",
           }}
         />
-        <Button variant="contained" onClick={() => addFromString(inputString)} data-testid="add-button">
+        <Button
+          variant="contained"
+          onClick={() => addFromString(inputString)}
+          data-testid="add-button"
+        >
           Add
         </Button>
       </Box>

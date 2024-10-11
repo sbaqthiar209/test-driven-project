@@ -53,7 +53,7 @@ describe("Assessment test cases for String calculator", () => {
   });
 
   it("To handle new lines between numbers (instead of commas)", async () => {
-    const inputStringWithNewLine = "2,1,2,1\n1,2"; //sum=9
+    const inputStringWithNewLine = "2,1,2,1\\n1,2"; //sum=9
     await userEvent.type(inputElement, inputStringWithNewLine);
     expect(inputElement).toHaveValue(inputStringWithNewLine);
     const buttonElement = screen.getByTestId("add-button");
