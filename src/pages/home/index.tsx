@@ -1,6 +1,6 @@
 import { Box, TextField, Typography, Button } from "@mui/material";
 import styles from "./home.module.scss";
-import React, { useEffect } from "react";
+import React from "react";
 
 const StringCalculator = () => {
   const [inputString, setInputString] = React.useState<string>("");
@@ -26,7 +26,7 @@ const StringCalculator = () => {
     return result;
   };
   const addFromString = (newValueToAdd: string) => {
-    if (newValueToAdd === "") {
+    if (newValueToAdd === "" || newValueToAdd.length>7) {
       return;
     }
     let cleanedArray = newValueToAdd.split(",");
