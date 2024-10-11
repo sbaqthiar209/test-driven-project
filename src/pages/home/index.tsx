@@ -25,6 +25,16 @@ const StringCalculator = () => {
     if (newValueToAdd === "") {
       return;
     }
+    if (newValueToAdd.includes("-")) {
+      //checking for negative values
+      const negativeValue = newValueToAdd.match(/-\d+/g);
+      const displayNegative = negativeValue?.join(",");
+      setHelptext(
+        `Exception - Negative numbers not allowed ${displayNegative ?? ""}`
+      );
+      setInputString("0");
+      return;
+    }
     if (newValueToAdd.startsWith("//")) {
       delimeter = newValueToAdd[2];
       newValueToAdd = newValueToAdd.replaceAll(`//${delimeter}`, "");

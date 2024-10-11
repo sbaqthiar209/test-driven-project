@@ -69,11 +69,13 @@ describe("Assessment test cases for String calculator", () => {
     expect(inputElement).toHaveValue("3");
   });
   it("To handle negative number and display the list of negative numbers comma separated", async () => {
-    const inputStringWithNegativeNumbers = "-1,-2,4,5"; //output exception
+    const inputStringWithNegativeNumbers = "//;\\n-1;-2"; //output exception
     await userEvent.type(inputElement, inputStringWithNegativeNumbers);
     expect(inputElement).toHaveValue(inputStringWithNegativeNumbers);
     const buttonElement = screen.getByTestId("add-button");
     await userEvent.click(buttonElement);
-    expect(screen.getByText("Exception")).toBeInTheDocument();
+    expect(screen.getByText(/Exception/i)).toBeInTheDocument();
+    //asserting display of negative values comma separated on UI
+    expect(screen.getByText(/-1,-2/)).toBeInTheDocument();
   });
 });
